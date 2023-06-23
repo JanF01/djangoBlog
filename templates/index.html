@@ -8,24 +8,28 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" />
   </head>
   <body>
-    <div class="header">
-      <h2>Example Blog</h2>
+    <div class="header hero">
+      <div class="icon-box">
+        <h2 class="title">Example Blog</h2>
+      </div>
     </div>
 
-    <div class="row">
-      <div class="leftcolumn">
-        {% for post in posts reversed %}
-        <div class="card">
-          <a
-            style="text-decoration: none; color: black"
-            href="/post/{{post.id}}"
-          >
-            <h2>{{post.title}}</h2>
-            <h5>{{post.created_at}}</h5>
-            <p>{{post.body|truncatewords:20}}</p>
-          </a>
+    <div class="blog">
+      <div class="row posts-list">
+        <div class="leftcolumn">
+          {% for post in posts reversed %}
+          <div class="card">
+            <a
+              style="text-decoration: none; color: black"
+              href="/post/{{post.id}}"
+            >
+              <h2 class="title">{{post.title}}</h2>
+              <h5 class="post-date">{{post.created_at}}</h5>
+              <article>{{post.body|truncatewords:20}}</article>
+            </a>
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </body>
