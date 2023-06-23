@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="header hero">
+      <div class="icon-box">
+        <h2 class="title">Example Blog</h2>
+      </div>
+    </div>
+
+    <div class="blog">
+      <div class="row posts-list">
+        <div class="leftcolumn">
+          {% for post in posts reversed %}
+          <div class="card">
+            <a
+              style="text-decoration: none; color: black"
+              href="/post/{{post.id}}"
+            >
+              <h2 class="title">{{post.title}}</h2>
+              <h5 class="post-date">{{post.created_at}}</h5>
+              <article>{{post.content|truncatewords:20}}</article>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
